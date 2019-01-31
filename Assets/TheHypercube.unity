@@ -108,6 +108,144 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &119616713
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 127088, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_Name
+      value: TheHypercubeModule (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &141150484
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 127088, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_Name
+      value: TheHypercubeModule (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &206959388
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 127088, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_Name
+      value: TheHypercubeModule (7)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &224392570
 Prefab:
   m_ObjectHideFlags: 0
@@ -147,8 +285,59 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114848120511536268, guid: 8814ea52310d2614a9feda02ec355ae4,
+        type: 2}
+      propertyPath: TwitchPlaysActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8814ea52310d2614a9feda02ec355ae4, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &505266593
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 127088, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_Name
+      value: TheHypercubeModule (6)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &539924550
 GameObject:
@@ -318,7 +507,145 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!1001 &1334641278
+--- !u!1001 &666459123
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 127088, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_Name
+      value: TheHypercubeModule (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &973851315
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 127088, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_Name
+      value: TheHypercubeModule (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1140768244
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 474250, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 127088, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+      propertyPath: m_Name
+      value: TheHypercubeModule (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b2790258749f3b748b3609d36dbd9bc2, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1484232168
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
