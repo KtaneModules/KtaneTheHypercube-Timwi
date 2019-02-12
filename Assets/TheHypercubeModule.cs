@@ -21,7 +21,7 @@ public class TheHypercubeModule : MonoBehaviour
     public Mesh Quad;
     public Material FaceMaterial;
 
-    private int[][] Rotations;
+    private int[][] _rotations;
 
     private static int _moduleIdCounter = 1;
     private int _moduleId;
@@ -32,11 +32,11 @@ public class TheHypercubeModule : MonoBehaviour
 
         ColorChange();
 
-        Rotations = new int[8][];
-        for (int i = 0; i < Rotations.Length; i++)
+        _rotations = new int[8][];
+        for (int i = 0; i < _rotations.Length; i++)
         {
             var axes = Enumerable.Range(0, 4).ToArray().Shuffle();
-            Rotations[i] = new[] { axes[0], axes[1] };
+            _rotations[i] = new[] { axes[0], axes[1] };
         }
         StartCoroutine(RotateHypercube());
     }
@@ -55,7 +55,7 @@ public class TheHypercubeModule : MonoBehaviour
         for (int i = 1; i < Vertices.Length; i++)
             Vertices[i].GetComponent<MeshRenderer>().sharedMaterial = Vertices[0].GetComponent<MeshRenderer>().sharedMaterial;
 
-        var clr = Color.HSVToRGB(hue, sat * .6f, v * .75f);
+        var clr = Color.HSVToRGB(hue, sat * .8f, v * .75f);
         clr.a = .3f;
         Faces[0].GetComponent<MeshRenderer>().material.color = clr;
         for (int i = 1; i < Faces.Length; i++)
@@ -67,10 +67,10 @@ public class TheHypercubeModule : MonoBehaviour
         yield return new WaitForSeconds(Rnd.Range(.1f, 2f));
         while (true)
         {
-            for (int rot = 0; rot < Rotations.Length; rot++)
+            for (int rot = 0; rot < _rotations.Length; rot++)
             {
-                var axis1 = Rotations[rot][0];
-                var axis2 = Rotations[rot][1];
+                var axis1 = _rotations[rot][0];
+                var axis2 = _rotations[rot][1];
                 var duration = 2f;
                 var elapsed = 0f;
 
