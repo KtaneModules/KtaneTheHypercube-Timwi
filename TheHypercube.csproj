@@ -13,12 +13,14 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectGenerator>VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.1.0p4</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -112,7 +114,6 @@
     <Compile Include="Assets\TestHarness\Widgets\TwoFactorWidget.cs" />
     <Compile Include="Assets\TestHarness\Widgets\Widget.cs" />
     <Compile Include="Assets\TheHypercubeModule.cs" />
-    <Compile Include="Assets\Ut.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\Managed\KMFramework.XML" />
