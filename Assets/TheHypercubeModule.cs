@@ -62,6 +62,8 @@ public class TheHypercubeModule : MonoBehaviour
         for (int i = 0; i < Faces.Length; i++)
             Faces[i].GetComponent<MeshRenderer>().sharedMaterial = _facesMat;
 
+        SetHypercube(Enumerable.Range(0, 1 << 4).Select(i => new Point4D((i & 1) != 0 ? 1 : -1, (i & 2) != 0 ? 1 : -1, (i & 4) != 0 ? 1 : -1, (i & 8) != 0 ? 1 : -1).Project()).ToArray());
+
         // RULE SEED
         var rnd = RuleSeedable.GetRNG();
         var faceDimensions = new[] { 3, 1, 2, 0 };
