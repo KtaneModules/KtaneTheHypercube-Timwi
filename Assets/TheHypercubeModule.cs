@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using TheHypercube;
 using UnityEngine;
 
@@ -246,17 +247,6 @@ public class TheHypercubeModule : MonoBehaviour
                     q.Enqueue(vx ^ (1 << cs[d]));
             }
 
-            var goodFaces = 0;
-            for (var d = 0; d < 4; d++)
-                for (var dv = 0; dv < 2; dv++)
-                    for (var e = d + 1; e < 4; e++)
-                        for (int ev = 0; ev < 2; ev++)
-                        {
-                            var vertices = Enumerable.Range(0, 1 << 4).Where(v => ((v & (1 << d)) != 0) == (dv != 0) && ((v & (1 << e)) != 0) == (ev != 0)).Select(v => colors[v].Value).Distinct().ToArray();
-                            if (vertices.Length == 4)
-                                goodFaces++;
-                        }
-
             _vertexColors = colors.Select(v => v.Value).ToArray();
             for (int v = 0; v < 1 << 4; v++)
                 Vertices[v].GetComponent<MeshRenderer>().material.color = _vertexColorValues[_vertexColors[v]];
@@ -377,8 +367,42 @@ public class TheHypercubeModule : MonoBehaviour
             }
     }
 
-    private KMSelectable[] ProcessTwitchCommand(string command)
+#pragma warning disable 414
+    private readonly string TwitchHelpMessage = @"!{0} go [use when hypercube is rotating] | !{0} zig-bottom-front-left [use when not rotating]";
+#pragma warning restore 414
+
+    IEnumerator ProcessTwitchCommand(string command)
     {
-        return null;
+        if (_rotationCoroutine != null && Regex.IsMatch(command, @"^\s*(go|activate|stop|run|start|on|off)\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
+        {
+            yield return null;
+            yield return new[] { Vertices[0] };
+            yield break;
+        }
+
+        Match m;
+        if (_rotationCoroutine == null && (m = Regex.Match(command, string.Format(@"^\s*((?:{0})(?:[- ,;]*(?:{0}))*)\s*$", _dimensionNames.SelectMany(x => x).Join("|")), RegexOptions.IgnoreCase | RegexOptions.CultureInvariant)).Success)
+        {
+            var elements = m.Groups[1].Value.Split(new[] { ' ', ',', ';', '-' }, StringSplitOptions.RemoveEmptyEntries);
+            if (elements.Length != 4)
+            {
+                yield return "sendtochaterror Dude, it’s a 4D hypercube, you gotta have 4 dimensions.";
+                yield break;
+            }
+            var dimensions = elements.Select(el => _dimensionNames.IndexOf(d => d.Any(dn => dn.EqualsIgnoreCase(el)))).ToArray();
+            var invalid = Enumerable.Range(0, 3).SelectMany(i => Enumerable.Range(i + 1, 3 - i).Where(j => dimensions[i] == dimensions[j]).Select(j => new { i, j })).FirstOrDefault();
+            if (invalid != null)
+            {
+                yield return elements[invalid.i].EqualsIgnoreCase(elements[invalid.j])
+                    ? string.Format("sendtochaterror Dude, you wrote “{0}” twice.", elements[invalid.i], elements[invalid.j])
+                    : string.Format("sendtochaterror Dude, “{0}” and “{1}” doesn’t jive.", elements[invalid.i], elements[invalid.j]);
+                yield break;
+            }
+            var vertexIx = 0;
+            for (int i = 0; i < 4; i++)
+                vertexIx |= _dimensionNames[dimensions[i]].IndexOf(dn => dn.EqualsIgnoreCase(elements[i])) << dimensions[i];
+            yield return null;
+            yield return new[] { Vertices[vertexIx] };
+        }
     }
 }
