@@ -23,7 +23,7 @@ public class TheHypercubeModule : MonoBehaviour
     public KMSelectable[] Vertices;
     public MeshFilter[] Faces;
     public Mesh Quad;
-    public Material FaceMaterial;
+    public TextMesh RotationText;
 
     // Rule-seed
     private int[][] _colorPermutations;
@@ -40,12 +40,17 @@ public class TheHypercubeModule : MonoBehaviour
     private int[] _vertexColors;
     private int _correctVertex;
 
+    // Long-press handling
+    private bool _isButtonDown;
+    private Coroutine _buttonDownCoroutine;
+
     private Material _edgesMat, _verticesMat, _facesMat;
-    private List<Mesh> _generatedMeshes = new List<Mesh>();
+    private readonly List<Mesh> _generatedMeshes = new List<Mesh>();
     private static readonly string[] _rotationNames = new[] { "XY", "YX", "XZ", "ZX", "XW", "WX", "YZ", "ZY", "YW", "WY", "ZW", "WZ" };
     private static readonly string[][] _dimensionNames = new[] { new[] { "left", "right" }, new[] { "bottom", "top" }, new[] { "front", "back" }, new[] { "zig", "zag" } };
     private static readonly string[] _colorNames = new[] { "red", "yellow", "green", "blue" };
     private static readonly Color[] _vertexColorValues = "e54747,e5e347,47e547,3ba0f1".Split(',').Select(str => new Color(Convert.ToInt32(str.Substring(0, 2), 16) / 255f, Convert.ToInt32(str.Substring(2, 2), 16) / 255f, Convert.ToInt32(str.Substring(4, 2), 16) / 255f)).ToArray();
+    private static readonly int[] _shapeOrder = { 3, 1, 2, 0 };
 
     void Start()
     {
@@ -63,26 +68,26 @@ public class TheHypercubeModule : MonoBehaviour
         for (int i = 0; i < Faces.Length; i++)
             Faces[i].GetComponent<MeshRenderer>().sharedMaterial = _facesMat;
 
-        SetHypercube(Enumerable.Range(0, 1 << 4).Select(i => new Point4D((i & 1) != 0 ? 1 : -1, (i & 2) != 0 ? 1 : -1, (i & 4) != 0 ? 1 : -1, (i & 8) != 0 ? 1 : -1).Project()).ToArray());
+        SetHypercube(GetUnrotatedVertices().Select(p => p.Project()).ToArray());
 
         // RULE SEED
         var rnd = RuleSeedable.GetRNG();
-        var faceDimensions = new[] { 3, 1, 2, 0 };
+        Debug.LogFormat("[The Hypercube #{0}] Using rule seed: {1}", _moduleId, rnd.Seed);
         _faces = new List<bool?[]>();
 
-        for (var i = 0; i < faceDimensions.Length; i++)
-            for (var j = i + 1; j < faceDimensions.Length; j++)
+        for (var i = 0; i < _shapeOrder.Length; i++)
+            for (var j = i + 1; j < _shapeOrder.Length; j++)
             {
                 var which = rnd.Next(0, 2) != 0;
                 if (rnd.Next(0, 2) == 0)
                 {
-                    _faces.Add(Enumerable.Range(0, 4).Select(d => d == faceDimensions[i] ? false : d == faceDimensions[j] ? which : (bool?) null).ToArray());
-                    _faces.Add(Enumerable.Range(0, 4).Select(d => d == faceDimensions[i] ? true : d == faceDimensions[j] ? which : (bool?) null).ToArray());
+                    _faces.Add(Enumerable.Range(0, 4).Select(d => d == _shapeOrder[i] ? false : d == _shapeOrder[j] ? which : (bool?) null).ToArray());
+                    _faces.Add(Enumerable.Range(0, 4).Select(d => d == _shapeOrder[i] ? true : d == _shapeOrder[j] ? which : (bool?) null).ToArray());
                 }
                 else
                 {
-                    _faces.Add(Enumerable.Range(0, 4).Select(d => d == faceDimensions[i] ? which : d == faceDimensions[j] ? false : (bool?) null).ToArray());
-                    _faces.Add(Enumerable.Range(0, 4).Select(d => d == faceDimensions[i] ? which : d == faceDimensions[j] ? true : (bool?) null).ToArray());
+                    _faces.Add(Enumerable.Range(0, 4).Select(d => d == _shapeOrder[i] ? which : d == _shapeOrder[j] ? false : (bool?) null).ToArray());
+                    _faces.Add(Enumerable.Range(0, 4).Select(d => d == _shapeOrder[i] ? which : d == _shapeOrder[j] ? true : (bool?) null).ToArray());
                 }
             }
         rnd.ShuffleFisherYates(_faces);
@@ -91,19 +96,41 @@ public class TheHypercubeModule : MonoBehaviour
                 .Select(str => str.Select(ch => "RYGB".IndexOf(ch)).ToArray()).ToArray()
         ).Take(12).ToArray();
 
+        Debug.LogFormat("<The Hypercube #{0}> Rules:\n{1}", _moduleId, Enumerable.Range(0, _rotationNames.Length).Select(ix => string.Format("{0}={1}", _rotationNames[ix], StringifyShape(_faces[ix]))).Join("\n"));
+
         // GENERATE PUZZLE
         _rotations = new int[5];
         for (int i = 0; i < _rotations.Length; i++)
         {
             var axes = "XYZW".ToArray().Shuffle();
-            _rotations[i] = Array.IndexOf(_rotationNames, string.Format("{0}{1}", axes[0], axes[1]));
+            _rotations[i] = Array.IndexOf(_rotationNames, string.Concat(axes[0], axes[1]));
         }
+
+        // ## FOR CREATING THE “ALL ROTATIONS” GIF
+        //if (_moduleId >= 1 && _moduleId <= 12)
+        //{
+        //    _rotations = new int[5] { _moduleId - 1, _moduleId - 1, _moduleId - 1, _moduleId - 1, _moduleId - 1 };
+        //    RotationText.text = _rotationNames[_moduleId - 1];
+        //    RotationText.gameObject.SetActive(true);
+        //}
+        //else
+        //    RotationText.gameObject.SetActive(false);
+        // ## END
+
         Debug.LogFormat(@"[The Hypercube #{0}] Rotations are: {1}", _moduleId, _rotations.Select(rot => _rotationNames[rot]).Join(", "));
 
-        for (var i = 0; i < 16; i++)
+        for (var i = 0; i < 1 << 4; i++)
+        {
             Vertices[i].OnInteract = VertexClick(i);
+            Vertices[i].OnInteractEnded = VertexRelease(i);
+        }
 
         _rotationCoroutine = StartCoroutine(RotateHypercube());
+    }
+
+    private Point4D[] GetUnrotatedVertices()
+    {
+        return Enumerable.Range(0, 1 << 4).Select(i => new Point4D((i & 1) != 0 ? 1 : -1, (i & 2) != 0 ? 1 : -1, (i & 4) != 0 ? 1 : -1, (i & 8) != 0 ? 1 : -1)).ToArray();
     }
 
     private KMSelectable.OnInteractHandler VertexClick(int v)
@@ -111,9 +138,51 @@ public class TheHypercubeModule : MonoBehaviour
         return delegate
         {
             Vertices[v].AddInteractionPunch(.2f);
-            if (_transitioning)
-                return false;
+            if (!_transitioning && _progress < 4)
+                _buttonDownCoroutine = StartCoroutine(HandleLongPress(v));
+            return false;
+        };
+    }
 
+    private IEnumerator HandleLongPress(int v)
+    {
+        if (_transitioning || _progress == 4)
+            yield break;
+
+        _isButtonDown = true;
+        Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, Vertices[v].transform);
+
+        yield return new WaitForSeconds(.7f);
+        _isButtonDown = false;
+        _buttonDownCoroutine = null;
+        Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonRelease, Vertices[v].transform);
+
+        // Handle long press
+        if (_rotationCoroutine == null)
+        {
+            _rotationCoroutine = StartCoroutine(RotateHypercube(delay: true));
+            Debug.LogFormat("[The Hypercube #{0}] Module reset.", _moduleId);
+        }
+    }
+
+    private Action VertexRelease(int v)
+    {
+        return delegate
+        {
+            if (!_isButtonDown || _progress == 4)
+                return;
+
+            if (_buttonDownCoroutine != null)
+            {
+                StopCoroutine(_buttonDownCoroutine);
+                _buttonDownCoroutine = null;
+            }
+
+            if (!_isButtonDown) // Long press already handled by HandleLogPress()
+                return;
+
+            // Handle short press
+            _isButtonDown = false;
             if (_rotationCoroutine != null)
             {
                 _progress = 0;
@@ -140,11 +209,9 @@ public class TheHypercubeModule : MonoBehaviour
                 Module.HandleStrike();
                 _rotationCoroutine = StartCoroutine(RotateHypercube(delay: true));
             }
-            return false;
         };
     }
 
-    private static readonly int[] _shapeOrder = { 3, 1, 2, 0 };
     private string StringifyShape(bool?[] shape)
     {
         var strs = _shapeOrder.Select(d => shape[d] == null ? null : _dimensionNames[d][shape[d].Value ? 1 : 0]).Where(s => s != null).ToArray();
@@ -198,7 +265,7 @@ public class TheHypercubeModule : MonoBehaviour
             var desiredFace = _faces[_rotations[_progress]];
             var initialColors = Enumerable.Range(0, 4).ToList();
             var q = new Queue<int>();
-            var colors = new int?[16];
+            var colors = new int?[1 << 4];
 
             Debug.LogFormat(@"[The Hypercube #{0}] Stage {1} correct face: {2}", _moduleId, _progress + 1, StringifyShape(desiredFace));
             Debug.LogFormat(@"[The Hypercube #{0}] Stage {1} correct color: {2}", _moduleId, _progress + 1, _colorNames[_colorPermutations[_rotations[4]][_progress]]);
@@ -265,7 +332,7 @@ public class TheHypercubeModule : MonoBehaviour
         _edgesMat.color = Color.HSVToRGB(h, s, v);
         _verticesMat.color = Color.HSVToRGB(h, s * .8f, v * .5f);
         var clr = Color.HSVToRGB(h, s * .8f, v * .75f);
-        clr.a = .3f;
+        clr.a = .1f;
         _facesMat.color = clr;
     }
 
@@ -275,7 +342,7 @@ public class TheHypercubeModule : MonoBehaviour
         while (colorChange.MoveNext())
             yield return colorChange.Current;
 
-        var unrotatedVertices = Enumerable.Range(0, 1 << 4).Select(i => new Point4D((i & 1) != 0 ? 1 : -1, (i & 2) != 0 ? 1 : -1, (i & 4) != 0 ? 1 : -1, (i & 8) != 0 ? 1 : -1)).ToArray();
+        var unrotatedVertices = GetUnrotatedVertices();
         SetHypercube(unrotatedVertices.Select(v => v.Project()).ToArray());
 
         while (!_transitioning)
@@ -346,11 +413,11 @@ public class TheHypercubeModule : MonoBehaviour
                     e++;
                 }
 
+        // FACES
         foreach (var mesh in _generatedMeshes)
             Destroy(mesh);
         _generatedMeshes.Clear();
 
-        // FACES
         var f = 0;
         for (int i = 0; i < 1 << 4; i++)
             for (int j = i + 1; j < 1 << 4; j++)
@@ -360,6 +427,7 @@ public class TheHypercubeModule : MonoBehaviour
                 if (b2 != 0 && (b2 & (b2 - 1)) == 0 && (i & b1 & ((i & b1) - 1)) == 0 && (j & b1 & ((j & b1) - 1)) == 0)
                 {
                     var mesh = new Mesh { vertices = new[] { vertices[i], vertices[i | j], vertices[i & j], vertices[j] }, triangles = new[] { 0, 1, 2, 1, 2, 3, 2, 1, 0, 3, 2, 1 } };
+                    mesh.RecalculateNormals();
                     _generatedMeshes.Add(mesh);
                     Faces[f].sharedMesh = mesh;
                     f++;
@@ -368,7 +436,7 @@ public class TheHypercubeModule : MonoBehaviour
     }
 
 #pragma warning disable 414
-    private readonly string TwitchHelpMessage = @"!{0} go [use when hypercube is rotating] | !{0} zig-bottom-front-left [use when not rotating]";
+    private readonly string TwitchHelpMessage = @"!{0} go [use when hypercube is rotating] | !{0} zig-bottom-front-left [presses a vertex when the hypercube is not rotating] | !{0} reset [forget input and resume rotations]";
 #pragma warning restore 414
 
     IEnumerator ProcessTwitchCommand(string command)
@@ -377,6 +445,15 @@ public class TheHypercubeModule : MonoBehaviour
         {
             yield return null;
             yield return new[] { Vertices[0] };
+            yield break;
+        }
+
+        if (_rotationCoroutine == null && Regex.IsMatch(command, @"^\s*(reset|go back|return|resume|rotate|rotations|cancel|abort)\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
+        {
+            yield return null;
+            Vertices[0].OnInteract();
+            yield return new WaitForSeconds(1f);
+            Vertices[0].OnInteractEnded();
             yield break;
         }
 
