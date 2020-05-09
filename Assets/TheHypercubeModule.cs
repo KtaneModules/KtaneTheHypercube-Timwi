@@ -241,7 +241,10 @@ public class TheHypercubeModule : MonoBehaviour
         SetColor(prevHue, prevSat, prevV);
 
         if (keepGrey)
+        {
+            _transitioning = false;
             yield break;
+        }
 
         yield return new WaitForSeconds(delay ? 2.22f : .22f);
 
@@ -363,7 +366,7 @@ public class TheHypercubeModule : MonoBehaviour
 
                 while (elapsed < duration)
                 {
-                    var angle = easeInOutQuad(elapsed, 0, Mathf.PI / 2, duration);
+                    var angle = Easing.InOutQuad(elapsed, 0, Mathf.PI / 2, duration);
                     var matrix = new double[16];
                     for (int i = 0; i < 4; i++)
                         for (int j = 0; j < 4; j++)
@@ -386,18 +389,7 @@ public class TheHypercubeModule : MonoBehaviour
             }
         }
 
-        _transitioning = false;
         _rotationCoroutine = null;
-    }
-
-    private static float easeInOutQuad(float t, float start, float end, float duration)
-    {
-        var change = end - start;
-        t /= duration / 2;
-        if (t < 1)
-            return change / 2 * t * t + start;
-        t--;
-        return -change / 2 * (t * (t - 2) - 1) + start;
     }
 
     private void SetHypercube(Vector3[] vertices)
@@ -486,5 +478,32 @@ public class TheHypercubeModule : MonoBehaviour
             yield return null;
             yield return new[] { Vertices[vertexIx] };
         }
+    }
+
+    IEnumerator TwitchHandleForcedSolve()
+    {
+        if (_rotationCoroutine != null)
+        {
+            Vertices[0].OnInteract();
+            yield return new WaitForSeconds(.1f);
+            Vertices[0].OnInteractEnded();
+            yield return new WaitForSeconds(.1f);
+        }
+
+        while (_progress < 4)
+        {
+            while (_transitioning)
+                yield return true;
+            yield return new WaitForSeconds(.1f);
+
+            var correctVertex = _correctVertex;
+            Vertices[correctVertex].OnInteract();
+            yield return new WaitForSeconds(.1f);
+            Vertices[correctVertex].OnInteractEnded();
+            yield return new WaitForSeconds(.1f);
+        }
+
+        while (_transitioning)
+            yield return true;
     }
 }
