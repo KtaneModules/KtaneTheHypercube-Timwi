@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 11420650}
   - component: {fileID: 11489324}
   - component: {fileID: 11496072}
-  - component: {fileID: 11489182}
-  - component: {fileID: 114242846025168278}
+  - component: {fileID: 114078588080272726}
   m_Layer: 0
-  m_Name: TheHypercubeModule
+  m_Name: HypermatchModule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,7 +145,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 862f17cbb58f97947b039a62097cb349, type: 2}
+  - {fileID: 2100000, guid: 2546c586664f447488d2e429ca1e6f78, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -240,8 +239,8 @@ MonoBehaviour:
   m_Script: {fileID: -119419473, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ModuleType: TheHypercubeModule
-  ModuleDisplayName: The Hypercube
+  ModuleType: HypermatchModule
+  ModuleDisplayName: Hypermatch
   RequiresTimerVisibility: 0
 --- !u!114 &11464240
 MonoBehaviour:
@@ -256,79 +255,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HighlightScale: {x: 1, y: 1, z: 1}
   OutlineAmount: 0
---- !u!114 &11489182
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb2efe9c6f253714f8e43b121261eda3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Bomb: {fileID: 11489324}
-  Module: {fileID: 11429752}
-  RuleSeedable: {fileID: 114242846025168278}
-  Audio: {fileID: 11496072}
-  Hypercube: {fileID: 4138533460171966}
-  Edges:
-  - {fileID: 4208398917827710}
-  - {fileID: 4364543657373680}
-  - {fileID: 4333911211981978}
-  - {fileID: 4152249543513706}
-  - {fileID: 4026594461310220}
-  - {fileID: 4900230415078030}
-  - {fileID: 4808503619938970}
-  - {fileID: 4575293362244176}
-  - {fileID: 4587725110051408}
-  - {fileID: 4502679638042156}
-  - {fileID: 4458891693144640}
-  - {fileID: 4218389053223548}
-  - {fileID: 4592656770754492}
-  - {fileID: 4799863285229684}
-  - {fileID: 4737006869354648}
-  - {fileID: 4082704638921822}
-  - {fileID: 4160783250226282}
-  - {fileID: 4347436669360160}
-  - {fileID: 4476710741196408}
-  - {fileID: 4914287394964284}
-  - {fileID: 4173254993010262}
-  - {fileID: 4386151106457400}
-  - {fileID: 4948954574008822}
-  - {fileID: 4214681753674370}
-  - {fileID: 4572823103082610}
-  - {fileID: 4921465299139106}
-  - {fileID: 4450164254072986}
-  - {fileID: 4620496282428672}
-  - {fileID: 4821519026530344}
-  - {fileID: 4389328720034652}
-  - {fileID: 4170310402550990}
-  - {fileID: 4185880987493846}
-  Vertices:
-  - {fileID: 114101895760958142}
-  - {fileID: 114146925351261524}
-  - {fileID: 114167963483526240}
-  - {fileID: 114089445242023578}
-  - {fileID: 114191211220424784}
-  - {fileID: 114523753661267240}
-  - {fileID: 114758400569048040}
-  - {fileID: 114139294251484940}
-  - {fileID: 114310224190698814}
-  - {fileID: 114841671741831502}
-  - {fileID: 114419423279216606}
-  - {fileID: 114376366185268070}
-  - {fileID: 114438440562159800}
-  - {fileID: 114298952714594714}
-  - {fileID: 114286193911186288}
-  - {fileID: 114324788151718516}
-  Faces: {fileID: 33884317367766912}
-  Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  RotationText: {fileID: 102713616489110462}
-  ProgressLights:
-  - {fileID: 1738440046468204}
-  - {fileID: 1223516506180946}
-  - {fileID: 1157083394570106}
 --- !u!114 &11489324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5048,6 +4974,73 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HighlightScale: {x: 1, y: 1, z: 1}
   OutlineAmount: 0
+--- !u!114 &114078588080272726
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15cf2f7122c9bb4eab202e159e3758c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bomb: {fileID: 11489324}
+  Module: {fileID: 11429752}
+  Audio: {fileID: 11496072}
+  Hypercube: {fileID: 4138533460171966}
+  Edges:
+  - {fileID: 4208398917827710}
+  - {fileID: 4364543657373680}
+  - {fileID: 4333911211981978}
+  - {fileID: 4152249543513706}
+  - {fileID: 4026594461310220}
+  - {fileID: 4900230415078030}
+  - {fileID: 4808503619938970}
+  - {fileID: 4575293362244176}
+  - {fileID: 4587725110051408}
+  - {fileID: 4502679638042156}
+  - {fileID: 4458891693144640}
+  - {fileID: 4218389053223548}
+  - {fileID: 4592656770754492}
+  - {fileID: 4799863285229684}
+  - {fileID: 4737006869354648}
+  - {fileID: 4082704638921822}
+  - {fileID: 4160783250226282}
+  - {fileID: 4347436669360160}
+  - {fileID: 4476710741196408}
+  - {fileID: 4914287394964284}
+  - {fileID: 4173254993010262}
+  - {fileID: 4386151106457400}
+  - {fileID: 4948954574008822}
+  - {fileID: 4214681753674370}
+  - {fileID: 4572823103082610}
+  - {fileID: 4921465299139106}
+  - {fileID: 4450164254072986}
+  - {fileID: 4620496282428672}
+  - {fileID: 4821519026530344}
+  - {fileID: 4389328720034652}
+  - {fileID: 4170310402550990}
+  - {fileID: 4185880987493846}
+  Vertices:
+  - {fileID: 114101895760958142}
+  - {fileID: 114146925351261524}
+  - {fileID: 114167963483526240}
+  - {fileID: 114089445242023578}
+  - {fileID: 114191211220424784}
+  - {fileID: 114523753661267240}
+  - {fileID: 114758400569048040}
+  - {fileID: 114139294251484940}
+  - {fileID: 114310224190698814}
+  - {fileID: 114841671741831502}
+  - {fileID: 114419423279216606}
+  - {fileID: 114376366185268070}
+  - {fileID: 114438440562159800}
+  - {fileID: 114298952714594714}
+  - {fileID: 114286193911186288}
+  - {fileID: 114324788151718516}
+  Faces: {fileID: 33884317367766912}
+  Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &114086096938936554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5316,18 +5309,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HighlightScale: {x: 1, y: 1, z: 1}
   OutlineAmount: 0
---- !u!114 &114242846025168278
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adf69c2de51bd3c43bbd9bc22578ee08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _seed: 1
 --- !u!114 &114286193911186288
 MonoBehaviour:
   m_ObjectHideFlags: 1

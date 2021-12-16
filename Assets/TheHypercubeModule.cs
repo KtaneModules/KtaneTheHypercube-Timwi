@@ -168,8 +168,9 @@ public class TheHypercubeModule : MonoBehaviour
     {
         return delegate
         {
-            if (!_isButtonDown || _progress == 4)
+            if (!_isButtonDown || _progress == 4) // Long press already handled by HandleLogPress()
                 return;
+            _isButtonDown = false;
 
             if (_buttonDownCoroutine != null)
             {
@@ -177,11 +178,7 @@ public class TheHypercubeModule : MonoBehaviour
                 _buttonDownCoroutine = null;
             }
 
-            if (!_isButtonDown) // Long press already handled by HandleLogPress()
-                return;
-
             // Handle short press
-            _isButtonDown = false;
             if (_rotationCoroutine != null)
             {
                 _progress = 0;
