@@ -52,7 +52,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\HypermatchModule.cs" />
+     <Compile Include="Assets\KMScripts\AssemblyShare.cs" />
      <Compile Include="Assets\KMScripts\Easing.cs" />
+     <Compile Include="Assets\KMScripts\GameFixes.cs" />
      <Compile Include="Assets\KMScripts\GeneralExtensions.cs" />
      <Compile Include="Assets\KMScripts\KMBombInfoExtensions.cs" />
      <Compile Include="Assets\KMScripts\KMBossModule.cs" />
@@ -60,26 +62,27 @@
      <Compile Include="Assets\KMScripts\KMRuleSeedable.cs" />
      <Compile Include="Assets\KMScripts\PrivateWhenPlayingAttribute.cs" />
      <Compile Include="Assets\KMScripts\ReadOnlyWhenPlayingAttribute.cs" />
+     <Compile Include="Assets\KMScripts\ReflectionHelper.cs" />
      <Compile Include="Assets\Point4D.cs" />
      <Compile Include="Assets\TestHarness\EdgeworkConfiguration.cs" />
-     <Compile Include="Assets\TestHarness\NeedyTimer.cs" />
-     <Compile Include="Assets\TestHarness\SevenSegDisplay.cs" />
-     <Compile Include="Assets\TestHarness\StatusLight\StatusLight.cs" />
+     <Compile Include="Assets\TestHarness\StatusLight\TestHarnessStatusLight.cs" />
      <Compile Include="Assets\TestHarness\TestHarness.cs" />
+     <Compile Include="Assets\TestHarness\TestHarnessNeedyTimer.cs" />
+     <Compile Include="Assets\TestHarness\TestHarnessSevenSegDisplay.cs" />
      <Compile Include="Assets\TestHarness\TestHighlightable.cs" />
      <Compile Include="Assets\TestHarness\TestSelectable.cs" />
      <Compile Include="Assets\TestHarness\TestSelectableArea.cs" />
      <Compile Include="Assets\TestHarness\THWidget.cs" />
      <Compile Include="Assets\TestHarness\TimerModule.cs" />
      <Compile Include="Assets\TestHarness\TwitchPlaysID.cs" />
-     <Compile Include="Assets\TestHarness\Widgets\BatteryWidget.cs" />
      <Compile Include="Assets\TestHarness\Widgets\CustomWidget.cs" />
-     <Compile Include="Assets\TestHarness\Widgets\IndicatorWidget.cs" />
-     <Compile Include="Assets\TestHarness\Widgets\ModWidget.cs" />
-     <Compile Include="Assets\TestHarness\Widgets\PortWidget.cs" />
-     <Compile Include="Assets\TestHarness\Widgets\SerialNumber.cs" />
+     <Compile Include="Assets\TestHarness\Widgets\TestHarnessBatteryWidget.cs" />
+     <Compile Include="Assets\TestHarness\Widgets\TestHarnessIndicatorWidget.cs" />
+     <Compile Include="Assets\TestHarness\Widgets\TestHarnessModWidget.cs" />
+     <Compile Include="Assets\TestHarness\Widgets\TestHarnessPortWidget.cs" />
+     <Compile Include="Assets\TestHarness\Widgets\TestHarnessSerialNumber.cs" />
+     <Compile Include="Assets\TestHarness\Widgets\TestHarnessWidget.cs" />
      <Compile Include="Assets\TestHarness\Widgets\TwoFactorWidget.cs" />
-     <Compile Include="Assets\TestHarness\Widgets\Widget.cs" />
      <Compile Include="Assets\TheHypercubeModule.cs" />
      <Compile Include="Assets\Ut.cs" />
      <None Include="Assets\Shaders\KT_3D_Text-Diffuse.shader" />

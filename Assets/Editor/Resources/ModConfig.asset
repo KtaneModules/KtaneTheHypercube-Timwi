@@ -12,17 +12,14 @@ MonoBehaviour:
   m_Name: ModConfig
   m_EditorClassIdentifier: 
   id: TheHypercube
-  title: The Hypercube
-  description: 'This device looks like it was recovered from an alien spacecraft.
-    It moves in strange ways. What does it want from us?
-
-
-    Module created by Timwi.
-
-
-    [url=http://ktane.timwi.de/PDF/The%20Hypercube.pdf]Manual PDF[/url]
-
-    [url=http://ktane.timwi.de/HTML/The%20Hypercube.html]Manual HTML[/url]'
+  title: The Hypercube & Hypermatch
+  author: Timwi
+  description: "This device looks like it was recovered from an alien spacecraft.
+    It moves in strange ways. What does it want from us?\r\n\r\nThe Hypercube module
+    created by Timwi:\r\n[url=http://ktane.timwi.de/PDF/The%20Hypercube.pdf]Manual
+    PDF[/url]\r\n[url=http://ktane.timwi.de/HTML/The%20Hypercube.html]Manual HTML[/url]\r\n\r\nHypermatch
+    module created by Goofy:\r\n[url=http://ktane.timwi.de/PDF/Hypermatch.pdf]Manual
+    PDF[/url]\r\n[url=http://ktane.timwi.de/HTML/Hypermatch.html]Manual HTML[/url]"
   version: 1.0
   outputFolder: build
   previewImage: {fileID: 2800000, guid: bd5c1f4881f57d54481b44e4c8a7779a, type: 3}
